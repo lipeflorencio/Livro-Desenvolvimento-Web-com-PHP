@@ -44,9 +44,10 @@
 				array_push($semana, "");
 			}
 		}
-		setlocale(LC_TIME, 'pt_BR', 'pt_BR.utf-8', 'pt_BR.utf-8', 'portuguese');
+		//setlocale(LC_ALL, 'pt_BR', 'pt_BR.utf-8', 'pt_BR.pt_utf-8', 'Portuguese_Brazil');
+		setlocale( LC_ALL, 'pt_BR.utf-8', 'pt_BR', 'Portuguese_Brazil');
 		
-		echo "<h3> Calendário do mês de " . strftime('%B', mktime(0, 0, 0, $mes , 1 , date('Y'))) . " de " . date('Y') . "</h3>";
+		echo "<h3> Calendário do mês de " . ucfirst(utf8_encode(strftime('%B', mktime(0, 0, 0, $mes , 1 , date('Y'))))) . " de " . date('Y') . "</h3>";
 		echo "<table border='1'>
 				<tr>
 					<th>Dom</th>
@@ -73,10 +74,19 @@
 	}
 	
 ?>
-
-
+<!DOCTYPE html>
+<html lang="en">
+<head>
+	<meta charset="utf-8">
+	<title></title>	
+</head>
+<body>
 	<?php
 		for ( $i = 1; $i <= 12; $i++ ) { 
 			calendario($i); 
 		}
 	?>
+</body>
+</html>
+
+
