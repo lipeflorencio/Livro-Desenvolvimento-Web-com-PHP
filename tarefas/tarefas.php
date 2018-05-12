@@ -1,46 +1,39 @@
-<!DOCTYPE html>
-<?php session_start(); ?>
-<html>
-	<head>
-		<title>Gerenciador de Tarefas</title>
-		<link rel="stylesheet" type="text/css" href="tarefas.css">
-	</head>
-	<body>
-		<h1>Gerenciador de Tarefas</h1>
-		<form>
-			<fieldset>
-				<legend>Nova tarefa</legend>
-				<label>
-					Tarefa:
-					<input type="text" name="nome"/>
-				</label>
-				<input type="submit" value="Cadastrar"/>
-			</fieldset>
-		</form>
-		<?php 
+<?php 
 
-			if (isset($_GET['nome'])) {
-				$_SESSION['lista_tarefas'][] = $_GET['nome'];
-			}
+session_start(); 
 
-			$lista_tarefas = array();
+if (isset($_GET['nome']) && $_GET['nome'] != '') {
+	$tarefa = array();
 
-			if (isset($_GET['nome'])) {
-				$lista_tarefas = $_SESSION['lista_tarefas'];
-			}
-		?>
+	$tarefa['nome'] = $_GET['nome'];
 
-		<table>
-			<tr>
-				<th>Tarefas</th>
-			</tr>
+	if (isset($_GET['descricao'])) {
+		$tarefa['descricao'] = $_GET['descricao'];
+	} else {
+		$tarefa['descricao'] = '';
+	}
 
-			<?php foreach ($lista_tarefas as $tarefa) : ?>
-				<tr>
-					<td><?php echo $tarefa; ?></td>
-				</tr>
-			<?php endforeach; ?>
-		</table>
+	if (isset($_GET['prazo'])) {
+		$tarefa['prazo'] = $_GET['prazo'];
+	} else {
+		$tarefa['prazo'] = '';
+	}
 
-	</body>
-</html>
+	$tarefa['prioridade'] = $_GET['prioridade'];
+
+	if (isset($_GET['concluida'])) {
+		$tarefa['concluida'] = $_GET['concluida'];
+	} else {
+		$tarefa['concluida'] = '';
+	}
+
+	$_SESSION['lista_tarefas'][] = $tarefa;
+}
+if (isset($_SESSION['lista_tarefas'])) {
+	$lista_tarefas = $_SESSION['lista_tarefas'];
+} else {
+	$lista_tarefas = array();
+}
+
+include "template.php";
+?>
