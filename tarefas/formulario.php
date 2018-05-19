@@ -1,10 +1,15 @@
-<form>
+<form method="POST">
     <input type="hidden" name="id"
            value="<?php echo $tarefa['id']; ?>" />
     <fieldset>
         <legend><?php echo ($tarefa['id'] > 0) ? 'Editar tarefa' : 'Nova tarefa'; ?></legend>
         <label>
             Tarefa:
+            <?php if ($tem_erros && isset($erros_validacao['nome'])) : ?>
+            <span class="erro">
+                <?php echo $erros_validacao['nome']; ?>
+            </span>
+            <?php endif; ?>
             <input type="text" name="nome"
                 value="<?php echo $tarefa['nome']; ?>" />
         </label>

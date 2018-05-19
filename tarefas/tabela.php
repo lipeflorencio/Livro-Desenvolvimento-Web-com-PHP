@@ -16,8 +16,7 @@
             <td><?php echo traduz_concluida($tarefa['concluida']); ?></td>
             <td> <!-- O campo com os links para editar e remover -->
                 <a href="editar.php?id=<?php echo $tarefa['id']; ?>">
-                    Editar
-                </a>
+                    Editar</a>&nbsp;
                 <a href="remover.php?id=<?php echo $tarefa['id']; ?>">
                     Remover
                 </a>
