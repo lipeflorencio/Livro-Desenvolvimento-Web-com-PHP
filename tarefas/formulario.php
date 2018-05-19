@@ -2,7 +2,7 @@
     <input type="hidden" name="id"
            value="<?php echo $tarefa['id']; ?>" />
     <fieldset>
-        <legend>Nova tarefa</legend>
+        <legend><?php echo ($tarefa['id'] > 0) ? 'Editar tarefa' : 'Nova tarefa'; ?></legend>
         <label>
             Tarefa:
             <input type="text" name="nome"
@@ -49,8 +49,11 @@
                     : '';
                 ?> />
         </label>
-        <input type="submit" value="
+        <?php if (! $exibir_tabela) : ?>
+        <button type="submit" formaction="tarefas.php">Cancelar</button>
+        <?php endif; ?>
+        <button type="submit">
             <?php echo ($tarefa['id'] > 0) ? 'Atualizar' : 'Cadastrar'; ?>
-        " />
+        </button>
     </fieldset>
 </form>
