@@ -63,4 +63,3 @@ $tarefa = array(
 );
 
 include "template.php";
-?>
