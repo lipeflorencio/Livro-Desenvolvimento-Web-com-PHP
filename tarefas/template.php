@@ -12,6 +12,8 @@
         
         <?php if ($exibir_tabela) : ?>
             <?php include('tabela.php'); ?>
+        <?php else : ?>
+            <a href="tarefas.php">Cancelar</a>
         <?php endif; ?>
 
     </body>

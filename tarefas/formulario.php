@@ -59,9 +59,6 @@
                     : '';
                 ?> />
         </label>
-        <?php if (! $exibir_tabela) : ?>
-        <button type="submit" formaction="tarefas.php">Cancelar</button>
-        <?php endif; ?>
         <button type="submit">
             <?php echo ($tarefa['id'] > 0) ? 'Atualizar' : 'Cadastrar'; ?>
         </button>
